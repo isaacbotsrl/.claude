@@ -43,7 +43,7 @@ description: Connect SysML v2 models to MATLAB / Simulink / System Composer thro
    component parameters, flows→connectors (+ `RosTopic` stereotype, routed via
    `<child>_<port>` boundary ports), interface links→connectors,
    allocate→allocation set. Never hand-edit its output.
-3. Build: `evaluate_matlab_code(project_path="\\wsl.localhost\Ubuntu\home\rover-a1\ros2_ws\rover_a1\mbse\matlab", code="build_architecture")`.
+3. Build: `evaluate_matlab_code(project_path="\\wsl.localhost\Ubuntu-26.04\home\rover-a1\ros2_ws\rover_a1\mbse\matlab", code="build_architecture")`.
 4. Verify with the toolkit: `model_overview` (model = `…\mbse\matlab\arch\RoverA1Arch.slx`,
    detail `interfaces`) — component/port counts must match the generator's summary line —
    and `model_check`. Unconnected ports usually mean a missing SysML flow: fix the
@@ -80,7 +80,7 @@ or analysis files (verify).
 
 ## Common pitfalls
 
-- Windows MATLAB sees WSL files through `\\wsl.localhost\Ubuntu\…`. Relative
+- Windows MATLAB sees WSL files through `\\wsl.localhost\Ubuntu-26.04\…`. Relative
   paths resolve against `--initial-working-folder`.
 - Units: SysML values are SI. Keep MATLAB variables in SI and name them with
   their unit (`capacity_Ah` is fine when the conversion is explicit).

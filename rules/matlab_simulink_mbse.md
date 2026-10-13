@@ -52,7 +52,7 @@ not WSL Claude Code, so the **manual** path was used and wired to WSL:
 |-------|-------|
 | MCP server v0.13.1 | `C:\Users\potlo\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe` (+ `--setup-matlab` run once against R2026a) |
 | Simulink Agentic Toolkit `SATK-2026.09.c` | `C:\Users\potlo\.matlab\agentic-toolkits\simulink` (git clone, pinned tag) |
-| MCP registration | `rover_a1/.mcp.json` (project scope; a real file since 2026-09-27, when `rover_mbse/` was removed, and its `--initial-working-folder` is `src/rover_ros/rover_platform_mbse`) — Windows exe via WSL interop, `--matlab-session-mode=auto`, `--extension-file=…\simulink\tools\tools.json`, `--disable-telemetry=true`, logs in `…\agentic-toolkits\logs` |
+| MCP registration | `rover_a1/.mcp.json` (project scope; a real file since 2026-09-27, when `rover_mbse/` was removed, and its `--initial-working-folder` is `src/rover_ros/rover_platform_mbse`) — Windows exe via WSL interop, `--matlab-session-mode=auto`, `--extension-file=…\simulink\tools\tools.json`, `--disable-telemetry=true`, logs in `…\agentic-toolkits\logs`, `--matlab-root=C:\Program Files\MATLAB\R2026a` (R2024b is also installed). Enabled in `.claude/settings.local.json` → `enabledMcpjsonServers`. Re-added 2026-10-06 after `.mcp.json` was overwritten with only `ros-mcp`: edit that file, never regenerate it |
 | Toolkit skills | Claude plugins from marketplace `matlab/simulink-agentic-toolkit#SATK-2026.09.c`, project scope (`.claude/settings.json` → `enabledPlugins`): model-based-design-core, model-based-system-engineering, verification-validation-and-test, simulink-simulation, physical-modeling, control-systems, simulink-environment-fundamentals |
 | MATLAB init | `C:\Users\potlo\Documents\MATLAB\startup.m` → `satk_initialize` (skipped for `-batch`) |
 
@@ -66,7 +66,7 @@ Tools exposed (14): `check_matlab_code`, `detect_matlab_toolboxes`,
 - `auto` mode attaches to a MATLAB that ran `satk_initialize` (i.e. one the
   user opened — `startup.m` does it); otherwise it **starts a new desktop
   MATLAB** (~60 s) that exits when the MCP server stops.
-- Paths: MATLAB is Windows. Pass WSL files as `\\wsl.localhost\Ubuntu\home\…`
+- Paths: MATLAB is Windows. Pass WSL files as `\\wsl.localhost\Ubuntu-26.04\home\…`
   (`evaluate_matlab_code` `project_path`, `run_matlab_file` `script_path`).
   Saving `.slx/.sldd/.mldatx` there works (harmless "change notification" warning).
 - A tool returning `no response messages received` = the attached MATLAB is
