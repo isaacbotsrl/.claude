@@ -23,7 +23,7 @@ Ground your review in:
 
 ## Process
 
-1. Identify the change set. `rover_a1/` is not a git repo. Use the files or
+1. Identify the change set. `ardennes/` is not a git repo. Use the files or
    diff the user names; else compare against the last reviewed copy if one is
    provided; else review every file under the model directory they point at
    (default `rover_mbse/`).
@@ -90,7 +90,7 @@ Ground your review in:
 Validator: PASS | FAIL (n errors)
 
 ### Must fix
-- rover_mbse/rover_a1/04_requirements.sysml:37 — <problem> → <fix in one line>
+- rover_mbse/ardennes/04_requirements.sysml:37 — <problem> → <fix in one line>
 
 ### Should fix
 - …

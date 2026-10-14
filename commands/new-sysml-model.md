@@ -16,7 +16,7 @@ If the name is missing, or the directory already exists, ask before acting.
 
 Process:
 1. Read the `sysml_v2_modeling` skill and `rules/sysml_v2.md`. Use
-   `rover_mbse/rover_a1/` as the reference for layout and idioms.
+   `rover_mbse/ardennes/` as the reference for layout and idioms.
 2. Create five files, one package each, named `<System>_<Layer>`:
    - `01_interfaces.sysml`: `QosProfile`, the `RosTopic` metadata def (or
      `private import RoverA1_Interfaces::*;` to reuse it), `item def`s, and

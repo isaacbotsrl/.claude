@@ -22,7 +22,7 @@ Quick reference and project conventions for writing **SysML v2** models
   `sysml.library/`.
 - Validator + renderer: `skills/sysml_v2_modeling/scripts/sysml_validate.py`
   (run through `/sysml-validate`). Pilot kernel env: `~/mbse_ws/tools/sysml-env`.
-- Seed model: `rover_a1/rover_mbse/rover_a1/` (`01_interfaces` … `05_analysis`).
+- Seed model: `ardennes/rover_mbse/ardennes/` (`01_interfaces` … `05_analysis`).
 - MATLAB / System Composer side: `matlab_simulink_mbse.md`.
 
 ---

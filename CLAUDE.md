@@ -66,7 +66,7 @@ For C++ the same separation lives under `include/<pkg>/<layer>/` and
 | Bridge a VDA 5050 fleet interface     | `rules/vda5050_protocol.md` + `skills/vda5050_integration/SKILL.md` |
 | Look up any VDA 5050 message/field    | `rules/vda5050_messages.md` (complete spec) |
 | Generate VDA 5050 code (which format?) | `rules/vda5050_implementation_formats.md` (pydantic / ROS msg / C++ idioms + v2→v3 diffs) |
-| Write / extend a SysML v2 model       | `rules/sysml_v2.md` + `skills/sysml_v2_modeling/SKILL.md` + `/new-sysml-model`; seed model `rover_mbse/rover_a1/` |
+| Write / extend a SysML v2 model       | `rules/sysml_v2.md` + `skills/sysml_v2_modeling/SKILL.md` + `/new-sysml-model`; seed model `rover_mbse/ardennes/` |
 | Validate SysML v2 / render diagrams   | `/sysml-validate` (OMG Pilot kernel, `~/mbse_ws/tools/sysml-env`) |
 | MATLAB / Simulink / System Composer   | `rules/matlab_simulink_mbse.md` + `skills/system_composer_sysml/SKILL.md` (needs the `matlab` MCP server) |
 | Platform MBSE (MATLAB-first): architecture, per-package SWRS, SYS-SR compliance | `src/rover_ros/rover_platform_mbse/README.md` (`build_all`, master policy) |

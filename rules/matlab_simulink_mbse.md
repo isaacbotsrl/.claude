@@ -52,7 +52,7 @@ not WSL Claude Code, so the **manual** path was used and wired to WSL:
 |-------|-------|
 | MCP server v0.13.1 | `C:\Users\potlo\.matlab\agentic-toolkits\bin\matlab-mcp-server.exe` (+ `--setup-matlab` run once against R2026a) |
 | Simulink Agentic Toolkit `SATK-2026.09.c` | `C:\Users\potlo\.matlab\agentic-toolkits\simulink` (git clone, pinned tag) |
-| MCP registration | `rover_a1/.mcp.json` (project scope; a real file since 2026-09-27, when `rover_mbse/` was removed, and its `--initial-working-folder` is `src/rover_ros/rover_platform_mbse`) — Windows exe via WSL interop, `--matlab-session-mode=auto`, `--extension-file=…\simulink\tools\tools.json`, `--disable-telemetry=true`, logs in `…\agentic-toolkits\logs`, `--matlab-root=C:\Program Files\MATLAB\R2026a` (R2024b is also installed). Enabled in `.claude/settings.local.json` → `enabledMcpjsonServers`. Re-added 2026-10-06 after `.mcp.json` was overwritten with only `ros-mcp`: edit that file, never regenerate it |
+| MCP registration | `ardennes/.mcp.json` (project scope; a real file since 2026-09-27, when `rover_mbse/` was removed, and its `--initial-working-folder` is `src/rover_ros/rover_platform_mbse`) — Windows exe via WSL interop, `--matlab-session-mode=auto`, `--extension-file=…\simulink\tools\tools.json`, `--disable-telemetry=true`, logs in `…\agentic-toolkits\logs`, `--matlab-root=C:\Program Files\MATLAB\R2026a` (R2024b is also installed). Enabled in `.claude/settings.local.json` → `enabledMcpjsonServers`. Re-added 2026-10-06 after `.mcp.json` was overwritten with only `ros-mcp`: edit that file, never regenerate it |
 | Toolkit skills | Claude plugins from marketplace `matlab/simulink-agentic-toolkit#SATK-2026.09.c`, project scope (`.claude/settings.json` → `enabledPlugins`): model-based-design-core, model-based-system-engineering, verification-validation-and-test, simulink-simulation, physical-modeling, control-systems, simulink-environment-fundamentals |
 | MATLAB init | `C:\Users\potlo\Documents\MATLAB\startup.m` → `satk_initialize` (skipped for `-batch`) |
 
@@ -81,7 +81,7 @@ Tools exposed (14): `check_matlab_code`, `detect_matlab_toolboxes`,
 **A. SysML v2 text → System Composer** (SysML is the source of truth)
 ```bash
 python3 .claude/skills/system_composer_sysml/scripts/sysml_to_syscomp.py \
-  rover_mbse/rover_a1 --root RoverA1 --out rover_mbse/matlab/build_architecture.m
+  rover_mbse/ardennes --root RoverA1 --out rover_mbse/matlab/build_architecture.m
 ```
 then `evaluate_matlab_code(project_path=<mbse\matlab>, code="build_architecture")`.
 Generated, idempotent: `arch/RoverA1Arch.slx` (components + parameters with
@@ -93,14 +93,14 @@ alternative source, not needed for local models.)
 
 **B. MATLAB project → SysML v2 text**: `rover_mbse/matlab/export_sysml.m` wraps the
 artifacts in `RoverA1.prj` (the `arch/` folder **must be on the project path**)
-and calls `exportFromMLProject` → `rover_mbse/export/rover_a1_export.sysml`, which
+and calls `exportFromMLProject` → `rover_mbse/export/ardennes_export.sysml`, which
 passes `/sysml-validate`. The export is **lossy**: keeps parts, ports, all
 connectors, parameters, `RosTopic` metadata, allocations; drops units/quantity
 types (all `Real`), turns items→port defs and flows→`connect`, and has **no
 requirements, analyses, verifications or provenance docs**. Use it for diffs
-only; never overwrite `rover_mbse/rover_a1/`.
+only; never overwrite `rover_mbse/ardennes/`.
 
-**C. Analysis:** `rover_mbse/matlab/analysis_rover_a1.m` reads inputs from the
+**C. Analysis:** `rover_mbse/matlab/analysis_ardennes.m` reads inputs from the
 System Composer **parameters** (never re-typed numbers), evaluates each SysML
 calc/analysis/verification case, runs the Simulink twin
 (`build_endurance_sim.m` → `EnduranceSim.slx`), and writes
